@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for server in servers %}
+      <div class='alert alert-{{ server['alert_level'] }}'><h2>{{ server['server_name'] }}</h2>
+      <small>Last seen: {{ server['last_checkin'] }}</small></div>
+    {% endfor %}
+{% endblock %}
