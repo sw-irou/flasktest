@@ -62,4 +62,4 @@ class LbHealthCheckView(MethodView):
 
 # Register the urls
 health.add_url_rule('/', view_func=HealthView.as_view('health'))
-health.add_url_rule('/healthcheck', view_func=LBHealthCheckView.as_view('health'))
+health.add_url_rule('/healthcheck', view_func=LbHealthCheckView.as_view('healthcheck'))
