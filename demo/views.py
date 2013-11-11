@@ -52,5 +52,14 @@ class HealthView(MethodView):
 
         return render_template('servers.html', servers=servers)
 
+class LbHealthCheckView(MethodView):
+    def get(self):
+        try:
+            MongoHealthHack.objects.all().delete()
+            return 'OK'
+        except:
+            return 'Failure'
+
 # Register the urls
 health.add_url_rule('/', view_func=HealthView.as_view('health'))
+health.add_url_rule('/healthcheck', view_func=LBHealthCheckView.as_view('health'))
